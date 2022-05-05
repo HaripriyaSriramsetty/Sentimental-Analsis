@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Amazon Reviews Sentiment Analysis</title>
+  <!--<meta charset="utf-8">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    #paragraph {
+      font-size: 30px;
+      line-height: 50px;
+    }
+
+    body {
+      font-family: Verdana;
+    }
+    
+* {
+  box-sizing: border-box;
+}
+img{
+  height: 25px;
+  width: 60px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+  margin:0 auto;
+  
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.center {
+  margin: auto;
+  width: 80%;
+  height: 500px;
+  padding: 10px;
+}
+.button {
+  background-color: #f58f2b; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 500px) {
+      .columnu {
+        width: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+<body style="background-color:#ebf8ff">
+
+  <div
+    style="background-color: #131921;color: white;text-align: center;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+    <p id="paragraph">  
+       Customer Reviews Sentiment Analysis</p>
+  </div>
+<div class="center">
+  <div class="row">
+    <div class="column">
+        <div >
+            <form method="POST"  >
+              <textarea required name="text1" placeholder="Say Something: ...." rows="15" cols="50"></textarea><br><br>
+              <input class="button" type="submit" style="color=#F58F2B">
+            </form>
+      </div>
+    </div>
+    <div class="column" >
+      {% if final %}
+		
+      <!--result start -->		
+            </br></br>  
+                
+             <h3>The Sentiment of</h3>
+             '{{ text1 }}' 
+             <p>is {{ final *100}}% positive !</p>
+            <h2>Score table</h2>
+      
+      
+      <div>
+      <table class="table">
+        <tr>
+          <td>SENTIMENT METRIC</td>
+          <td>SCORE</td> 
+        </tr>
+        <tr>  <td>Positive</td><td>{{text2*100}}   </td> </tr>
+        <tr>  <td>Neutral</td> <td>{{text3*100}}   </td> </tr>
+        <tr>  <td>Negative</td> <td>{{text5*100}}  </td> </tr>
+        <tr>  <td>Compound</td>  <td>{{text4*100}} </td> </tr>
+      </table>
+      </div>
+      
+                  {% else %}
+                  <p></p>
+                  {% endif %}
+              </div></br></br>
+    </div>
+  </div>
+</div>
+
+  
+ 
+  <div
+    style="   position: fixed;left: 0;bottom: 0;width: 100%;background-color:#131921;color: white;text-align: center;">
+    Customer Reviews Sentiment Analysis - Hari Priya
+  </div>
+
+</body>
+
+</html>
